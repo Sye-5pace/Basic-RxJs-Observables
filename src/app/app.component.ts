@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { of } from 'rxjs';
+import { from, of } from 'rxjs';
 
 
 @Component({
@@ -23,8 +23,15 @@ export class AppComponent {
     });
 
 
-    //Task 2: Creating and Subscribing to an Observable with the 'Of' operator
-    // const numArray =
+    //Task 2: Working with 'From' operator:
+    const colorArray = from(['#965D69','#daa631','#BC7484','#747474','#5D6996'])
+    .subscribe({
+      next: (color: string) => console.log('Emits color: '+ color),
+      error: (error) => console.log('Error occur'+ error),
+      complete: () => console.log('Observable subscription Completed')
+    });
+
+    //Task
   }
 
 }
