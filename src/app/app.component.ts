@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { from, of } from 'rxjs';
+import { from, interval, of, take } from 'rxjs';
 
 
 @Component({
@@ -31,7 +31,14 @@ export class AppComponent {
       complete: () => console.log('Observable subscription Completed')
     });
 
-    //Task
+    //Task 3: Using interval operator:
+    const interval$ = interval(1000).pipe(
+      take(5)
+    )
+    interval$.subscribe({
+      next: (value) => console.log(`Emits value: ${value}, Timestamp: ${new Date().toLocaleTimeString()}`),
+      complete: () => console.log('Observable completed')
+    })
   }
 
 }
